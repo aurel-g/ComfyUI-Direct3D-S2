@@ -21,6 +21,10 @@ cd ComfyUI-Direct3D-S2
 # Make sure the PyTorch CUDA version matches your installed CUDA Toolkit.
 pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu121
 
+# Torchsparse
+git clone https://github.com/mit-han-lab/torchsparse
+cd torchsparse && python -m pip install .
+
 # Install dependencies
 pip install -r requirements.txt
 pip install -e .
