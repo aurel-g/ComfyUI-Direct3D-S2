@@ -37,5 +37,5 @@ pip install -e .
 ### Download Pretrained Models
 
 
-Chatterbox TTS Pretrained [Models](https://huggingface.co/wushuang98/Direct3D-S2)
+Direct3D-S2 Pretrained [Models](https://huggingface.co/wushuang98/Direct3D-S2)
 
