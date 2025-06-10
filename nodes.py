@@ -8,7 +8,7 @@ class LoadDirect3DS2Model:
             "required": {
                 "model_path": ("STRING", {"default": "wushuang98/Direct3D-S2"}),
                 "subfolder_path": ("STRING", {"default": "direct3d-s2-v-1-1"}),
-                "device": ("STRING", {"default": "cuda"})
+                "device": (["cuda", "cpu"], {"default": "cuda"}),
             }
         }
 
@@ -47,13 +47,33 @@ class LoadDirect3DS2Image:
         return (image,)
 
 
+class Direct3DS2:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "model": ("MODEL",),
+                "image": ("IMAGE",),
+                "sdf_resolution": ("INT", {"default": 1024}),
+                "remesh": ("BOOLEAN", {"default": False}),
+            }
+        }
 
+    RETURN_TYPES = ("MESH",)
+    RETURN_NAMES = ("mesh",)
+    FUNCTION = "generate"
+    CATEGORY = "Direct3D‑S2"
 
+    def generate(self, model, image, sdf_resolution, remesh):
+        pipeline = model
+        
+        mesh = pipeline(
+          image, 
+          sdf_resolution=sdf_resolution, # 512 or 1024
+          remesh=remesh, # Switch to True if you need to reduce the number of triangles.
+        )["mesh"]
+        
+        return (mesh,)
 
-mesh = pipeline(
-  'assets/test/13.png', 
-  sdf_resolution=1024, # 512 or 1024
-  remesh=False, # Switch to True if you need to reduce the number of triangles.
-)["mesh"]
 
 mesh.export('output.obj')
