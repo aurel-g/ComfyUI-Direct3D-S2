@@ -76,4 +76,25 @@ class Direct3DS2:
         return (mesh,)
 
 
-mesh.export('output.obj')
+class SaveDirect3DS2Mesh:
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "mesh_path": ("STRING", {"default": "output.obj"}),
+                "mesh": ("MESH",),
+            }
+        }
+
+    RETURN_TYPES = ()
+    RETURN_NAMES = ()
+    FUNCTION = "save"
+    CATEGORY = "Direct3D‑S2"
+
+    def save(self, mesh_path, mesh):
+
+        mesh.export(mesh_path)
+        
+        return ()
+
+
