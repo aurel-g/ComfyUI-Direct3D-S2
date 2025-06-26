@@ -1,4 +1,4 @@
-from direct3d_s2.pipeline import Direct3DS2Pipeline
+from .direct3d_s2.pipeline import Direct3DS2Pipeline
 
 
 class LoadDirect3DS2Model:

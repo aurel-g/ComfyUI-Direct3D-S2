@@ -7,8 +7,8 @@ from tqdm import tqdm
 from omegaconf import OmegaConf
 from huggingface_hub import hf_hub_download
 from typing import Union, List, Optional
-from direct3d_s2.modules import sparse as sp
-from direct3d_s2.utils import (
+from .modules import sparse as sp
+from .utils import (
     instantiate_from_config, 
     preprocess_image, 
     sort_block, 
